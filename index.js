@@ -52,7 +52,7 @@ io.on('connection', socket => {
     roomDictionary[socket.id] = newID
 
     // send room id back to host
-    io.to(newID).emit('roomEstablished', newID)
+    io.to(newID).emit('created', newID)
   })
 
   // device connects
@@ -64,8 +64,8 @@ io.on('connection', socket => {
       roomDictionary[socket.id] = room
 
       // send notification to new device and host
-      io.to(socket.id).emit('roomJoined', room)
-      io.to(room).emit('deviceConnected', socket.id)
+      io.to(socket.id).emit('joined', room)
+      io.to(room).emit('ready', socket.id)
     } else {
       // notify user that room does not exist
       io.to(socket.id).emit('roomJoinRejected')
