@@ -41,19 +41,6 @@ const roomExists = function(roomToCheck) {
 io.on('connection', socket => {
   console.log('a user connected')
 
-  if (!roomDictionary.hasOwnProperty(socket.id]) {
-    let newID = simpleID(6, '1234567890')
-
-    // send host to newly created room
-    socket.join(newID)
-
-    // register host in dictionary
-    roomDictionary[socket.id] = newID
-
-    // send room id back to host
-    io.to(newID).emit('created', newID)
-  }
-
   // set up a room
   socket.on('createNewRoom', () => {
     let newID = simpleID(6, '1234567890')
