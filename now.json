@@ -1,0 +1,7 @@
+{
+	"version": 1,
+	"alias": ["office-hour-server.seatsmart.tech"],
+	"env": {
+	  "NODE_ENV": "production"
+	}
+}
