@@ -4,7 +4,8 @@ const io = require('socket.io')(server)
 const RTCMultiConnectionServer = require('rtcmulticonnection-server')
 
 io.on('connection', socket => {
-  RTCMultiConnectionServer.addSocket(socket);
+	console.log('New Socket connected: ', socket.id)
+	RTCMultiConnectionServer.addSocket(socket);
 })
 
 server.listen(4000, () => {
